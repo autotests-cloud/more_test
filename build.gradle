@@ -23,17 +23,23 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-tasks.withType(Test) {
-    systemProperties = System.properties
+test {
+
+    useJUnitPlatform()
 
     testLogging {
-        lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
-            exceptionFormat "short"
-        }
+        // set options for log level LIFECYCLE
+        events "failed",
+                "passed",
+                "skipped",
+                "standard_out",
+                "standard_error"
+        exceptionFormat "full"
+        showExceptions true
+        showCauses true
+        showStackTraces true
     }
 }
-
 task simple_tests(type: Test) {
     useJUnitPlatform {
         includeTags 'simple_tests'
