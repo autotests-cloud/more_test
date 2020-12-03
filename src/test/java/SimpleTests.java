@@ -12,7 +12,8 @@ public class SimpleTests {
     void positiveTest() {
         int a = 2;
         int b = 3;
-
+        System.out.println(a);
+        assertEquals(a * b, 6);
         assertEquals(a * b, 6);
     }
 
